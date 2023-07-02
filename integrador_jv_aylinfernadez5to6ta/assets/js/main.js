@@ -1,8 +1,9 @@
 let productos=[]; //es el vector o array de productos
 class Producto{
-    constructor (nombre,precio){
-      this.nombre=nombre;
+    constructor (nombre,precio,imagen){
+      this.nombre = nombre;
       this.precio = precio;
+      this.imagen = imagen;
     }
 }
 function AgregarProducto(evento) {
