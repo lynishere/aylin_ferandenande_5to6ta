@@ -1,9 +1,8 @@
 let productos=[]; //es el vector o array de productos
 class Producto{
-    constructor (nombre,precio,imagen){
+    constructor (nombre,precio){
       this.nombre = nombre;
       this.precio = precio;
-      this.imagen = imagen;
     }
 }
 function AgregarProducto(evento) {
@@ -16,7 +15,7 @@ function AgregarProducto(evento) {
     productos.push(ProductoNuevo);
     const ListaProductos = document.getElementById("lista-productos");
     const li = document.createElement("li");
-     li.textContent = `Nombre: ${ProductoNuevo.nombre}, Precio: $${ProductoNuevo.precio}`;
+     li.innerText = `Nombre: ${ProductoNuevo.nombre}, Precio: $${ProductoNuevo.precio}`;
      ListaProductos.appendChild(li);
      document.getElementById("producto-nombre").value = "";
     document.getElementById("producto-precio").value = "";
