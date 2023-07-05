@@ -86,3 +86,7 @@ function Finalizar(){
       document.getElementById('btnVaciarCarrito').removeAttribute('disabled');
   }
 }
+function Vaciar(){
+  localStorage.removeItem("carrito");
+  CarritoCargado();
+}
