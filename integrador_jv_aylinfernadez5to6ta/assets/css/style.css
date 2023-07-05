@@ -1,43 +1,95 @@
 /*style de html tienda / inicio*/
-.conteiner-tienda{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;  
-}
-*art{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;   
-}
 .conteiner-productos{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row; 
+    flex-wrap: wrap;
     gap: 15px ;   
 }
+/* Estilos para los formularios */
+  /* estislo  para los formulario de crear productos*/
+  #formulario_prod{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 10px;
+    }
+  #formulario-producto{
+    display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+position: relative;
+min-width: 24px;
+max-width: 50%;
+width: 100%;
+top: 10px;
+left:50px;
+padding: 15px;
+box-shadow: 0 1rem 1rem rgba(227, 238, 246, 0.3);
+background-color: rgba(244, 215, 215, 0.3);
+border: 10px;
+color: rgba(237, 222, 222, 0.971);
+  }
+ /* Estilos para los productos */ 
+#product-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+  
+  .product-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .product-item img {
+    width: 100%;
+    height: auto;
+  }
 .card-img-top{
     height: 200px;
     width: 100;
     align-items: center;
 }
+#cart-items {
+    padding: 10px;
+  }
+  
+  #cart-items .cart-item {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  #cart-items .cart-item img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
 /*CSS del Html iniciar sesion*/
+*{
+  margin :0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .conteiner-formulario{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    flex-wrap: wrap;
 }
 .formulario{
 display: flex;
 justify-content: center;
 align-items: center;
 flex-direction: column;
-position: absolute;
+position: relative;
 min-width: 240PX;
-max-width: 25%;
+max-width: 30%;
 width: 25%;
 top: 10%;
 left:50%;
@@ -57,7 +109,7 @@ button{
     display: block;
     margin: 15px;
     text-align: center;
-    width: 50%;
+    width: 200px;
     height: 40px ;
     background-color: darkcyan;
     border: none;
@@ -68,4 +120,6 @@ button{
 /*todo*/
 body{
     background: darksalmon;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:honeydew;
 }

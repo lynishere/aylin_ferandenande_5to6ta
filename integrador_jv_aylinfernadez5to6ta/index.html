@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
+      <!-- AQUI YACE LA NAVBAR -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.html">DulcesLyn</a>
@@ -29,48 +30,42 @@
           </div>
         </div>
     </nav>
-    <h2> Bienvenido a la pagina web de la empresa "DulcesLyn"</h2>
-    <form id="formulario-producto">
-      <label for="producto-nombre">Nombre del producto:</label>
-      <input type="text" id="producto-nombre" required>
-      <label for="producto-precio">Precio del producto:</label>
-      <input type="text" id="producto-precio" required>
-      <button  type="submit" id="agregar-producto">Agregar producto</button>
-    </form>
-    <ul id="lista-productos">
-    </ul>
-    <div class="conteniner-tienda">
-        <h1 id="art">Articulos de la tienda</h1>
-       <div class="conteiner-productos">
-         <div class="card" style="width: 18rem;">
-            <img src="./assets/img/ositos.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Gomitas de ositos</h5>
-              <p class="card-text">Gomitas con forma de ositos en distintos colores y con sabores de frutas</p>
-              <p class="card-text">$50.00</p>
-              <a href="#" class="btn btn-primary">Añadir al carrito</a>
-            </div>
-         </div>
-         <div class="card" style="width: 18rem;">
-            <img src="./assets/img/paletas_colores.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Paletas de colores</h5>
-              <p class="card-text">paletas de colores, viene en muchos otros colores, el tamaño tambien es variado</p>
-              <p class="card-text">$60.00</p>
-              <a href="#" class="btn btn-primary">Añadir al carrito</a>
-            </div>
-         </div>
-         <div class="card" style="width: 18rem;">
-            <img src="./assets/img/chicles_fresa.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Chile fresa</h5>
-              <p class="card-text">Chicles en forma de tabletas y con sabor a fresas, existen de mas sabores </p>
-              <p class="card-text">$20.00</p>
-              <a href="#" class="btn btn-primary">Añadir al carrito</a>
-            </div>
-        </div>
-     </div>
+    <h1>Bienvenido a la tienda online de "DulcesLyn"</h1>
+  <div >
+        <!-- Mostrar los productos predefinidos(aun no esta del todo bien pero es una vista de lo que se necesita para la parte3) -->
+    <div id="formulario_prod">
+        <!-- FORMULARIO DEL PROTUDUCTOS A crear/agregar -->
+        <form id="formulario-producto">
+          <h2>Agregar producto</h2>
+          <label for="name">Nombre del producto:</label>
+          <input type="text" id="name" required>
+          <label for="price">Precio del producto:</label>
+          <input type="number" id="price"  required>
+          <button type="button" value="Agregar" onclick="AgregarProd()">Crear producto</button>
+         </form>
     </div>
+    <h2>Productos</h2>
+      <!-- Mostrar los productos predefinidos(aun no esta del todo bien pero es una vista de lo que se necesita para la parte3) -->
+      <div  class="conteiner-productos" id="productos">
+        <div class="card" style="width: 18rem;">
+          <img src="./assets/img/ositos.jpeg" alt="Imagen del producto">
+          <h3 class="card-title">Gomitas de ositos</h3>
+          <p>Precio: $10</p>
+          <button onclick="agregarAlCarrito(0)">Agregar al carrito</button>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <img src="./assets/img/chicles_fresa.jpeg" alt="Imagen del producto">
+          <h3 class="card-title">Chicles sabor fresa</h3>
+          <p>Precio: $20</p>
+          <button onclick="agregarAlCarrito(1)">Agregar al carrito</button>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <img src="./assets/img/paletas_colores.jpeg" alt="Imagen del producto">
+          <h3 class="card-title">Paletas de colores</h3>
+          <p>Precio: $30</p>
+          <button onclick="agregarAlCarrito(2)">Agregar al carrito</button>
+        </div>
+      </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="./assets/js/main.js"></script>
 </body>
