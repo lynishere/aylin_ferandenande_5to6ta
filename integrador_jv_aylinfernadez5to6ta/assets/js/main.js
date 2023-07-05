@@ -38,32 +38,3 @@ function AgregarProd(){
   document.getElementById("price").value = '';
   };
 }
-
-// Función para crear un nuevo producto
-function crearproducto(nombre, precio) {
-  const nuevoProducto = new Producto(nombre, precio);
-
-  let productos = cargarproductos();
-  productos.push(nuevoProducto);
-  localStorage.setItem('productos', JSON.stringify(productos));
-
-  mostrarproductos();
-}
-
-// Evento al enviar el formulario para crear un nuevo producto
-const productForm = document.getElementById('formulario-producto');
-productForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const productName = document.getElementById('name').value;
-  const productPrice = document.getElementById('price').value;
-
-  if (productName.trim() !== '' && !isNaN(productPrice)) {
-    crearproducto(productName, parseFloat(productPrice));
-    productForm.reset();
-  } else {
-    alert('Por favor, ingrese un nombre válido y un precio numérico.');
-  }
-});
-
-// Cargar productos al cargar la página
-mostrarproductos();
