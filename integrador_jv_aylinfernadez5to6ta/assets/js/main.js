@@ -38,5 +38,51 @@ function AgregarProd(){
   };
 }
 function AlCarrito(i){
-console.log('Producto agregado al carrito:', productos[i]);
+  const producto = productos[i];
+  let carrito = ObtCarrito();
+  carrito.push(producto);
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+function ObtCarrito(){
+  const GuardarCarrito= localStorage.getItem("carrito");
+  if (GuardarCarrito){
+    return JSON.parse(GuardarCarrito);
+  }else{
+    return [];
+  }
+}
+function CarritoCargado(){
+  const carrito = ObtCarrito();
+  const carrito1 = document.getElementById("carrito");
+  carrito1.innerHTML="";
+  if (carrito.length === 0){
+    carrito1.innerHTML= "<p>EL CARRITO SE ENCUENTRA VACIO.</p>";
+  }else{
+    carrito.forEach((producto, i) => {
+      const ProductoHtml = `
+      <div>
+        <img src="./assets/img/defult.jpeg">
+        <h3>${producto.nombre}</h3>
+        <p>Precio: $${producto.precio}</p>
+        <button onclick="EliminarC(${i})">Eliminar</button>
+      </div>
+    `;
+    carrito1.innerHTML+= ProductoHtml;
+    });
+  }
+}
+function EliminarC(i){
+  let carrito = ObtCarrito()
+  carrito.splice(i,1);
+  localStorage.setItem("carrito",JSON.stringify(carrito));
+  CarritoCargado();
+}
+function Finalizar(){
+  alert("La compra fue exitosa");
+  CarritoCargado();
+  const carrito=ObtCarrito();
+  if (carrito.length >0){
+    document.getElementById('btnFinalizarCompra').removeAttribute('disabled');
+      document.getElementById('btnVaciarCarrito').removeAttribute('disabled');
+  }
 }
