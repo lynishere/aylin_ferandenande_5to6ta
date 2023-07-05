@@ -4,7 +4,7 @@ class Producto{
       this.precio = precio;
     }
 }
-const productos = ObtenerProductos();
+const productos = ObtenerProductos(); //este es el array
 function ObtenerProductos() {
   const ProductoGuardado = localStorage.getItem("productos");
   if (ProductoGuardado){
@@ -30,7 +30,7 @@ function AgregarProd(){
     <img src="./assets/img/defult.jpeg" alt="Imagen del producto">
     <h3 class="card-title">${ProductoNuevo.nombre}</h3>
     <p>Precio: $${ProductoNuevo.precio}</p>
-    <button onclick="agregarAlCarrito(${productos.indexOf(ProductoNuevo)})">Agregar al carrito</button>
+    <button onclick="AlCarrito(${productos.indexOf(ProductoNuevo)})">Agregar al carrito</button>
   </div>`;
   document.getElementById('productos').innerHTML += ProductoHTML;
   document.getElementById('name').value = "";
