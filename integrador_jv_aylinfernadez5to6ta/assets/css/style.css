@@ -15,6 +15,7 @@
     align-items: center;
     flex-direction: column;
     border: 10px;
+    flex-wrap: wrap;
     }
   #formulario-producto{
     display: flex;
@@ -34,41 +35,29 @@ border: 10px;
 color: rgba(237, 222, 222, 0.971);
   }
  /* Estilos para los productos */ 
-#product-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
+  .card{
+    display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
   }
-  
-  .product-item {
-    border: 1px solid #ccc;
-    padding: 10px;
-  }
-  
-  .product-item img {
-    width: 100%;
-    height: auto;
-  }
-.card-img-top{
+  .card img{
+    width: 270px;
     height: 200px;
-    width: 100;
+    object-fit: cover;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+ /*CSS del Html Carrito*/ 
+ .formato-carrrito{
+  display: flex;
+    justify-content: center;
     align-items: center;
-}
-#cart-items {
-    padding: 10px;
-  }
-  
-  #cart-items .cart-item {
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    padding: 10px;
-  }
-  
-  #cart-items .cart-item img {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-  }
+    flex-direction: column;
+    flex-wrap: wrap;
+  gap: 5px ;  
+ }
 /*CSS del Html iniciar sesion*/
 *{
   margin :0;
