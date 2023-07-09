@@ -43,7 +43,7 @@ function CarritoCargado(){
     for (let i =0; i < carrito.length; i++){
       const producto = carrito[i];
       const ProductoHTML= `<div class="card" style="width: 18rem;">
-      <img src="./assets/img/defult.jpeg" alt="${producto.nombre}">
+      <img src="./assets/img/defult.jpeg" alt="Imagen del producto">
         <h3>${producto.nombre}</h3>
         <p>Precio: $${producto.precio}</p>
         <button onclick="EliminarC(${i})">Eliminar</button>
@@ -86,5 +86,9 @@ function Vaciar(){
   carrito.length = 0;
   localStorage.removeItem("carrito");
   CarritoCargado();
+}
+if (carrito.length > 0) {
+  document.getElementById("btnFinalizarCompra").removeAttribute("disabled");
+  document.getElementById("btnVaciarCarrito").removeAttribute("disabled");
 }
 CarritoCargado()
