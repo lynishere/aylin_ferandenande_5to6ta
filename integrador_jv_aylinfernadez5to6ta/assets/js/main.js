@@ -12,8 +12,8 @@ function ObtenerProductos() {
     return JSON.parse(ProductoGuardado);
   }else{
     const ProductosPredefinidos=[
-      new Producto('Gomitas de ositos', 20),
-      new Producto('Chicles sabor fresa', 10),
+      new Producto('Gomitas de ositos', 10),
+      new Producto('Chicles sabor fresa', 20),
       new Producto('Paletas de colores', 30)
     ];
     localStorage.setItem("productos",JSON.stringify(ProductosPredefinidos))
@@ -29,6 +29,15 @@ function ObtCarrito(){
   }
 }
 function AlCarrito(i){ //Agregar al carrito
+      Swal.fire({
+    position: 'top-right',
+    background:"white",
+    width:"350px",
+    icon: 'success',
+    title: 'Agregado al carrito',
+    showConfirmButton: false,
+    timer: 1500
+  })
   const producto = productos[i];
   carrito.push(producto);
   localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -43,7 +52,7 @@ function CarritoCargado(){
     for (let i =0; i < carrito.length; i++){
       const producto = carrito[i];
       const ProductoHTML= `<div class="card" style="width: 18rem;">
-      <img src="./assets/img/defult.jpeg" alt="${producto.nombre}">
+      <img src="./assets/img/defult.png" alt="${producto.nombre}">
         <h3>${producto.nombre}</h3>
         <p>Precio: $${producto.precio}</p>
         <button onclick="EliminarC(${i})">Eliminar</button>
@@ -61,7 +70,7 @@ function AgregarProd(){
     localStorage.setItem("productos",JSON.stringify(productos));
     const ProductoHTML = `
     <div class="card" style="width: 18rem;">
-    <img src="./assets/img/defult.jpeg" alt="${ProductoNuevo.nombre}">
+    <img src="./assets/img/defult.png" alt="${ProductoNuevo.nombre}">
     <h3 class="card-title">${ProductoNuevo.nombre}</h3>
     <p>Precio: $${ProductoNuevo.precio}</p>
     <button onclick="AlCarrito(${productos.indexOf(ProductoNuevo)})">Agregar al carrito</button>
@@ -81,6 +90,8 @@ function Finalizar(){
  {
   Swal
     .fire({
+        background:"white",
+        width:"350px",
         title: "COMPRAS",
         text: "Compra Finalizada",
         text: "¿Desea finalisar la compra?",
