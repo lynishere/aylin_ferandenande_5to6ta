@@ -43,7 +43,7 @@ function CarritoCargado(){
     for (let i =0; i < carrito.length; i++){
       const producto = carrito[i];
       const ProductoHTML= `<div class="card" style="width: 18rem;">
-      <img src="./assets/img/defult.jpeg" alt="Imagen del producto">
+      <img src="./assets/img/defult.jpeg" alt="${producto.nombre}">
         <h3>${producto.nombre}</h3>
         <p>Precio: $${producto.precio}</p>
         <button onclick="EliminarC(${i})">Eliminar</button>
@@ -61,7 +61,7 @@ function AgregarProd(){
     localStorage.setItem("productos",JSON.stringify(productos));
     const ProductoHTML = `
     <div class="card" style="width: 18rem;">
-    <img src="./assets/img/defult.jpeg" alt="Imagen del producto">
+    <img src="./assets/img/defult.jpeg" alt="${ProductoNuevo.nombre}">
     <h3 class="card-title">${ProductoNuevo.nombre}</h3>
     <p>Precio: $${ProductoNuevo.precio}</p>
     <button onclick="AlCarrito(${productos.indexOf(ProductoNuevo)})">Agregar al carrito</button>
@@ -77,7 +77,22 @@ function EliminarC(i){
   CarritoCargado();
 }
 function Finalizar(){
-  alert("La compra fue exitosa");
+  Swal
+    .fire({
+        title: "COMPRAS",
+        text: "¿Eliminar?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: "Sí, eliminar",
+        cancelButtonText: "Cancelar",
+    })
+    .then(resultado => {
+        if (resultado.value) {
+            console.log("*se elimina la compra*");
+        } else {
+            console.log("*NO se elimina la compra*");
+        }
+    });
   carrito.length = 0;
   localStorage.setItem("carrito", JSON.stringify(carrito));
   CarritoCargado();
