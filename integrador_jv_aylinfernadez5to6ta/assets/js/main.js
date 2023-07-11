@@ -77,25 +77,31 @@ function EliminarC(i){
   CarritoCargado();
 }
 function Finalizar(){
+ if ( carrito != 0)
+ {
   Swal
     .fire({
         title: "COMPRAS",
-        text: "¿Eliminar?",
-        icon: 'warning',
+        text: "Compra Finalizada",
+        text: "¿Desea finalisar la compra?",
+        icon: 'success',
         showCancelButton: true,
-        confirmButtonText: "Sí, eliminar",
+        confirmButtonText: "Sí, Finalizar",
         cancelButtonText: "Cancelar",
     })
     .then(resultado => {
         if (resultado.value) {
-            console.log("*se elimina la compra*");
+            console.log("*se finaliza la compra*");
+            Vaciar();
+            CarritoCargado();
         } else {
-            console.log("*NO se elimina la compra*");
+            console.log("*NO se finaliza la compra*");
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+            CarritoCargado();
         }
-    });
-  carrito.length = 0;
-  localStorage.setItem("carrito", JSON.stringify(carrito));
-  CarritoCargado();
+    }); 
+ } 
+}
 }
 function Vaciar(){
   carrito.length = 0;
