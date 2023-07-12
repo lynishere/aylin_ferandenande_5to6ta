@@ -1,75 +1,81 @@
 /*style de html tienda / inicio*/
 .conteiner-productos{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row; 
-    flex-wrap: wrap;
-    gap: 15px ;   
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row; 
+  flex-wrap: wrap;
+  gap: 15px ;   
 }
 /* Estilos para los formularios */
-  /* estislo  para los formulario de crear productos*/
-  #formulario_prod{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border: 10px;
-    flex-wrap: wrap;
-    }
-  #formulario-producto{
-    display: flex;
+#formulario_prod{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 10px;
+  flex-wrap: wrap;
+  }
+#formulario-producto{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  min-width: 24px;
+  max-width: 50%;
+  width: 100%;
+  top: 10px;
+  left:50px;
+  padding: 15px;
+  background-color: rgba(244, 215, 215, 0.3);
+  border: 10px;
+  color: rgba(237, 222, 222, 0.971);
+}
+/* Estilos para los productos */ 
+.card{
+  display: flex;
+align-items: center;
+border: 1px solid #ccc;
+padding: 10px;
+margin-bottom: 10px;
+}
+.card img{
+  width: 270px;
+  height: 200px;
+  object-fit: cover;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+/*CSS del Html Carrito*/ 
+.formato-carrrito{
+display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+gap: 5px ;  
+}
+#carrito{
+display: flex;
 justify-content: center;
 align-items: center;
-flex-direction: column;
-position: relative;
-min-width: 24px;
-max-width: 50%;
-width: 100%;
-top: 10px;
-left:50px;
-padding: 15px;
-box-shadow: 0 1rem 1rem rgba(227, 238, 246, 0.3);
-background-color: rgba(244, 215, 215, 0.3);
-border: 10px;
-color: rgba(237, 222, 222, 0.971);
-  }
- /* Estilos para los productos */ 
-  .card{
-    display: flex;
-  align-items: center;
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin-bottom: 10px;
-  }
-  .card img{
-    width: 270px;
-    height: 200px;
-    object-fit: cover;
-    margin-right: 5px;
-    margin-left: 5px;
-  }
- /*CSS del Html Carrito*/ 
- .formato-carrrito{
-  display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    flex-wrap: wrap;
-  gap: 5px ;  
- }
+flex-direction: row; 
+flex-wrap: wrap;
+gap: 5px ;  
+}
 /*CSS del Html iniciar sesion*/
 *{
-  margin :0;
-  padding: 0;
-  box-sizing: border-box;
+margin :0;
+padding: 0;
+box-sizing: border-box;
 }
 .conteiner-formulario{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 .formulario{
 display: flex;
@@ -77,38 +83,34 @@ justify-content: center;
 align-items: center;
 flex-direction: column;
 position: relative;
-min-width: 240PX;
-max-width: 30%;
-width: 25%;
-top: 10%;
+min-width: 340PX;
+max-width: 340px;
+width: 220px;
+top: 30px;
+right: 50%;
 left:50%;
 transform: translate(-50%,50%);
-padding: 15px;
-box-shadow: 0 1rem 1rem rgba(0,0,0,0.3);
-background-color: rgba(0,0,0,0.3);
+padding: 10px;
+box-shadow: 0 1rem 1rem rgba(252, 249, 249, 0.3);
+background-color: rgba(240, 204, 204, 0.3);
 border: 5px;
 color: ghostwhite;
 }
-h1{
-    position: relative;
-    font: 17px;
-    margin-bottom: 10px;
-}
 button{
-    display: block;
-    margin: 15px;
-    text-align: center;
-    width: 200px;
-    height: 40px ;
-    background-color: darkcyan;
-    border: none;
-    cursor: pointer;
-    border-radius: 20px;
-    color: aliceblue;
+  display: block;
+  margin: 10px;
+  text-align: center;
+  width: 35%;
+  height: 50px ;
+  background-color:indianred;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  color: aliceblue;
 }
 /*todo*/
 body{
-    background: darksalmon;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color:honeydew;
+  background: darksalmon;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color:honeydew;
 }
