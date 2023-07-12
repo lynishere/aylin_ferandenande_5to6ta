@@ -28,42 +28,44 @@
   top: 10px;
   left:50px;
   padding: 15px;
+  box-shadow: 0 1rem 1rem rgba(252, 249, 249, 0.172);
   background-color: rgba(244, 215, 215, 0.3);
   border: 10px;
   color: rgba(237, 222, 222, 0.971);
 }
-/* Estilos para los productos */ 
-.card{
+
+ /* Estilos para los cartas */ 
+  .card{
+    display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  }
+  .card img{
+    width: 270px;
+    height: 200px;
+    object-fit: cover;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+ /*CSS del Html Carrito*/ 
+ .formato-carrrito{
   display: flex;
-align-items: center;
-border: 1px solid #ccc;
-padding: 10px;
-margin-bottom: 10px;
-}
-.card img{
-  width: 270px;
-  height: 200px;
-  object-fit: cover;
-  margin-right: 5px;
-  margin-left: 5px;
-}
-/*CSS del Html Carrito*/ 
-.formato-carrrito{
-display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+  gap: 5px ;  
+ }
+ #carrito{
+  display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row; 
   flex-wrap: wrap;
-gap: 5px ;  
-}
-#carrito{
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: row; 
-flex-wrap: wrap;
-gap: 5px ;  
-}
+  gap: 5px ;  
+ }
 /*CSS del Html iniciar sesion*/
 *{
 margin :0;
@@ -96,19 +98,26 @@ background-color: rgba(240, 204, 204, 0.3);
 border: 5px;
 color: ghostwhite;
 }
+/* sweet alert*/
+.swal2-title {
+  color:darksalmon;
+}
+.swal2-html-container, .swal2-title{
+  color:lightcoral !important;
+}
+/*todo*/
 button{
   display: block;
   margin: 10px;
   text-align: center;
-  width: 35%;
-  height: 50px ;
+  width: 37%;
+  height: 53px ;
   background-color:indianred;
   border: none;
   cursor: pointer;
   border-radius: 20px;
   color: aliceblue;
 }
-/*todo*/
 body{
   background: darksalmon;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
