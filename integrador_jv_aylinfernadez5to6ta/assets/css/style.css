@@ -122,7 +122,7 @@
   margin-top: 1rem;
 }
 .cart-item {
-  padding: 10px;
+  padding: 25px;
   background-color: white;
   border: none;
   border-radius: 5px;
@@ -179,9 +179,9 @@ left:50%;
 transform: translate(-50%,50%);
 padding: 10px;
 box-shadow: 0 1rem 1rem rgba(252, 249, 249, 0.3);
-background-color: rgba(253, 225, 86, 0.794);
+background-color: rgba(241, 179, 96, 0.794);
 border: 5px;
-color:blanchedalmond;
+color:rgb(249, 245, 240);
 }
 .login-label {
   margin-top: 1rem;

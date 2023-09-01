@@ -5,7 +5,20 @@ document.addEventListener("DOMContentLoaded", function () {
   const totalElement = document.getElementById("total");
 
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
+  let insertUser = document.getElementById("user-profile"); 
+  function perfil() {
+    let insertUser = document.getElementById("user-profile");   
+    insertUser.innerHTML = `
+        <p id="user-name">Hola, Administrador</p>
+        <img src="../assets/img/admi_user.png" id="user-pic">
+    `;
+  } 
+  if(!localStorage.getItem("admin")){
+      insertUser.innerHTML="";
+  } else {
+    perfil();
+    
+  }
   // Función para mostrar los productos en el carrito con botón de eliminar
   function mostrarProductosEnCarrito() {
     let idProd = 0;
@@ -13,8 +26,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (carrito.length === 0) {
       carritoContainer.innerHTML =  `
-      <p>El carrito está vacío</p>
+      <h3>El carrito está vacío</h3>
+      <br>
       <a class="login-submit btn primary"  id="boton" href="../index.html">¡Compra algo!</a>
+      <br>
        `;
 
     } else {
@@ -25,10 +40,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         carritoContainer.innerHTML += `
           <div class="cart-item">
-            <h3 class="card-title">${producto.nombre}</h3>
+          <button class="btn btn-danger btn-sm elim-prod" data-index="${index}">x</button>
+            <h5 class="card-title">${producto.nombre}</h5>
             <p class="card-text">Precio: $${producto.precio.toFixed(2)}</p>
-            <button class="btn btn-danger btn-sm elim-prod" data-index="${index}">x</button>
           </div>
+          <br>
         `;
       });
     }

@@ -113,11 +113,20 @@ document.addEventListener("click", function (event) {
 });
 
 const formulario = document.querySelector(".formulario_prod");
-
+let insertUser = document.getElementById("user-profile"); 
+function perfil() {
+  let insertUser = document.getElementById("user-profile");   
+  insertUser.innerHTML = `
+      <p id="user-name">Hola, Administrador</p>
+      <img src="./assets/img/admi_user.png" id="user-pic">
+  `;
+} 
 if(!localStorage.getItem("admin")){
     formulario.style.display = "none";
+    insertUser.innerHTML="";
 } else {
   formulario.style.display = "block";
+  perfil();
   
 }
 
