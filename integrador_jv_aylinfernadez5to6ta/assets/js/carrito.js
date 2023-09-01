@@ -14,7 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (carrito.length === 0) {
       carritoContainer.innerHTML =  `
       <p>El carrito está vacío</p>
-      <a class="login-submit btn" id="boton" href="../index.html">¡Compra algo!</a> `;
+      <a class="login-submit btn primary"  id="boton" href="../index.html">¡Compra algo!</a>
+       `;
 
     } else {
       carrito.forEach((producto, index) => {

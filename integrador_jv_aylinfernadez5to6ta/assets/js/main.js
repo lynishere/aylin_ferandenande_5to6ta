@@ -34,12 +34,13 @@ function verificacion() {
       },
     ];
     localStorage.setItem("productos", JSON.stringify(productos));
+    getProducts();
   } else {
     productos = JSON.parse(localStorage.getItem("productos"));
   }
 
 };
-document.addEventListener("DOMContentLoaded", function (){
+
   const formularioProducto = document.getElementById("formulario-producto");
   const contenedorProductos = document.getElementById("productos");
   formularioProducto.addEventListener("submit", function (event) {
@@ -93,10 +94,8 @@ function mostrarProductosEnTienda() {
 }
 // Cargar productos al inicio de la página
 verificacion();
-
 // Mostrar los productos en la tienda
 mostrarProductosEnTienda();
-
 // Escuchar clics en los botones "Agregar al carrito"
 document.addEventListener("click", function (event) {
   if (event.target.classList.contains("agregar-carrito")) {
@@ -113,7 +112,42 @@ document.addEventListener("click", function (event) {
   }
 });
 
-});
+const formulario = document.querySelector(".formulario_prod");
+
+if(!localStorage.getItem("admin")){
+    formulario.style.display = "none";
+} else {
+  formulario.style.display = "block";
   
+}
 
-
+async function getProducts(){
+  try{
+    let productoActual
+    let products = document.getElementById("productos");
+    let response = await fetch("https://fakestoreapi.com/products?limit=5");
+    response = await response.json();
+    response.forEach((product, id) => {
+      productoActual = {
+        id: product.id,
+        nombre: product.title,
+        precio: product.price,
+        imagen: product.image
+      }
+      products.innerHTML += `
+      <div class="card">
+      <img src="${product.imagen}" class="card-img-top" alt="${product.nombre}">
+      <div class="card-body">
+        <h5 class="card-title">${product.nombre}</h5>
+        <p class="card-text">Precio: $${product.precio.toFixed(2)}</p>
+        <button class="btn btn-primary agregar-carrito" data-producto-id="${id}">Agregar al carrito</button>
+      </div>
+    </div>
+      `;
+      productos.push(productoActual);
+      localStorage.setItem("productos", JSON.stringify(productos));
+    });
+  }catch(error){
+    console.log(error);
+  }
+}
