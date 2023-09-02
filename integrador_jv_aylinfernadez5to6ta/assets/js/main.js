@@ -129,7 +129,7 @@ if(!localStorage.getItem("admin")){
   perfil();
   
 }
-
+// aqui comienza la parte 6
 async function getProducts(){
   try{
     let productoActual
@@ -160,3 +160,4 @@ async function getProducts(){
     console.log(error);
   }
 }
+// aqui termina (es un api para agregar productos)
