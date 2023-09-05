@@ -1,7 +1,7 @@
 /*navbar*/
 #navbarNav {
   justify-content: space-between !important;
-  background-color:beige;
+  background-color:rgb(246, 246, 239);
 }
 
 .nav-item {
@@ -36,20 +36,18 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 10px;
   flex-wrap: wrap;
   }
 #formulario-producto{
- 
+  flex-direction: row; 
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   position: relative;
   min-width: 24px;
-  max-width: 50%;
+  max-width: 500px;
   width: 100%;
-  top: 10px;
-  left:50px;
   padding: 15px;
   box-shadow: 0 1rem 1rem rgba(252, 249, 249, 0.172);
   background-color: rgba(189, 122, 122, 0.3);
@@ -97,13 +95,13 @@
   border-radius: 5px; 
 }
 /*para el boton de cerrar*/
-.danger {background-color: white; border: 2px solid #f44336;} 
+.danger {background-color: white; border: 2px solid #fff7f7;} 
 .danger:hover {background: #da190b; color: white;}
 /*para el boton de inicio*/
-.success {background-color: white; border: 2px solid #04AA6D;} 
-.success:hover {background-color: #46a049; color: white;}
+.success {background-color: white; border: 2px solid #f3f7f5;} 
+.success:hover {background-color: #aae9ac; color: white;}
 /*para los botones finaliar y vaciar*/
-.secondary {background-color: white; border: 2px solid #aba3a3;} 
+.secondary {background-color: white; border: 2px solid #fefafa;} 
 .secondary:hover {background: #ddd; color: white;}
 
 .primary {background-color: white; border: 2px solid #007bff;} 
@@ -129,14 +127,14 @@
   margin: 1rem;
 }
 .elim-prod {
-  background-color: red;
+  background-color: rgb(240, 206, 206);
   color: white;
   border: none;
   cursor: pointer;
   float: right; /* Posicionar el botón a la derecha */
   position: absolute;
-  margin-top: -70px;
-  margin-left: 125px;
+  margin-top: -40px;
+  margin-left: 123px;
 }
  #carrito{
   text-align: center;
@@ -150,11 +148,7 @@
   margin-bottom: 1rem;
 }
 /*CSS del Html iniciar sesion*/
-*{
-margin :0;
-padding: 0;
-box-sizing: border-box;
-}
+
 .conteiner-formulario{
   display: flex;
   justify-content: center;
@@ -222,7 +216,7 @@ button{
 /*----------------BODY-----------------*/
 body{
   background:navajowhite;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family:Arial, Helvetica, sans-serif;
   color:#000;
 }
 /* footer */
