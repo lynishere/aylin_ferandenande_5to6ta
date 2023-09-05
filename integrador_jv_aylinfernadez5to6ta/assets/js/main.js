@@ -33,7 +33,7 @@ function verificacion() {
           "https://m.media-amazon.com/images/I/81DyTdNyaBL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
       },
       {
-        nombre: "ALFAFORES RRELLENO DE DULCE DE LECHE",
+        nombre: "ALFAFORES RELLENOS DE DULCE DE LECHE",
         precio: 100,
         id: 4,
         imagen:
