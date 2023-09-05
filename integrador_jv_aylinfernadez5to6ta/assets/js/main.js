@@ -32,9 +32,15 @@ function verificacion() {
         imagen:
           "https://m.media-amazon.com/images/I/81DyTdNyaBL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
       },
+      {
+        nombre: "ALFAFORES RRELLENO DE DULCE DE LECHE",
+        precio: 100,
+        id: 4,
+        imagen:
+          "https://i.pinimg.com/236x/83/26/ae/8326ae5a31495b68b2a88f3a80efb3a6.jpg",
+      },
     ];
     localStorage.setItem("productos", JSON.stringify(productos));
-    getProducts();
   } else {
     productos = JSON.parse(localStorage.getItem("productos"));
   }
@@ -46,7 +52,8 @@ function verificacion() {
   formularioProducto.addEventListener("submit", function (event) {
     event.preventDefault();
     // Recopilar datos de los campos del formulario
-    const nombre = document.getElementById("nombre").value;
+    let nombre = document.getElementById("nombre").value;
+    nombre = nombre.toUpperCase();
     const precio = parseFloat(document.getElementById("precio").value);
     const imagen = document.getElementById("imagen").value;
   
@@ -94,8 +101,10 @@ function mostrarProductosEnTienda() {
 }
 // Cargar productos al inicio de la página
 verificacion();
+
 // Mostrar los productos en la tienda
 mostrarProductosEnTienda();
+
 // Escuchar clics en los botones "Agregar al carrito"
 document.addEventListener("click", function (event) {
   if (event.target.classList.contains("agregar-carrito")) {
@@ -111,7 +120,45 @@ document.addEventListener("click", function (event) {
     Swal.fire("Producto agregado al carrito.", "", "success");
   }
 });
+function usuario(){
+  if (sessionStorage.getItem("nombreUser") != null) {
+    crearUsuario();
+  } else {
+    fetch("https://randomuser.me/api/")
+      .then((response) => response.json())
+      .then((resultado) => {
+        // manda perfil a sessionStorage
+        let apiNombre = resultado.results[0].name.first;
+        let apiApellido = resultado.results[0].name.last;
+        let apiFoto = resultado.results[0].picture.medium;
+        sessionStorage.setItem("nombreUser", JSON.stringify(apiNombre));
+        sessionStorage.setItem("apellidoUser", JSON.stringify(apiApellido));
+        sessionStorage.setItem("fotoUser", JSON.stringify(apiFoto));
+        // generar html con API
+        insertUser.innerHTML = `
+                <p id="user-name">Hola, ${apiNombre} ${apiApellido}</p>
+                <img src="${apiFoto}" id="user-pic">
+                `;
+      })
+      .catch(
+        (error) => console.log(error),
+        (insertUser.innerHTML = `
+            <p id="user-name">Cargando usuario...</p>
+            <img src="../assets/img/carga_user.png" id="user-pic">
+            `)
+      );
+  }
+}
+const crearUsuario = () => {
 
+  let nombreUser = JSON.parse(sessionStorage.getItem("nombreUser"));
+  let apellidoUser = JSON.parse(sessionStorage.getItem("apellidoUser"));
+  let fotoUser = JSON.parse(sessionStorage.getItem("fotoUser"));
+  insertUser.innerHTML = `
+              <p id="user-name">Hola, ${nombreUser} ${apellidoUser}</p>
+              <img src="${fotoUser}" id="user-pic">
+              `;
+};
 const formulario = document.querySelector(".formulario_prod");
 let insertUser = document.getElementById("user-profile"); 
 function perfil() {
@@ -120,44 +167,16 @@ function perfil() {
       <p id="user-name">Hola, Administrador</p>
       <img src="./assets/img/admi_user.png" id="user-pic">
   `;
+  
 } 
 if(!localStorage.getItem("admin")){
     formulario.style.display = "none";
     insertUser.innerHTML="";
+    usuario();
 } else {
   formulario.style.display = "block";
   perfil();
   
 }
-// aqui comienza la parte 6
-async function getProducts(){
-  try{
-    let productoActual
-    let products = document.getElementById("productos");
-    let response = await fetch("https://fakestoreapi.com/products?limit=5");
-    response = await response.json();
-    response.forEach((product, id) => {
-      productoActual = {
-        id: product.id,
-        nombre: product.title,
-        precio: product.price,
-        imagen: product.image
-      }
-      products.innerHTML += `
-      <div class="card">
-      <img src="${product.imagen}" class="card-img-top" alt="${product.nombre}">
-      <div class="card-body">
-        <h5 class="card-title">${product.nombre}</h5>
-        <p class="card-text">Precio: $${product.precio.toFixed(2)}</p>
-        <button class="btn btn-primary agregar-carrito" data-producto-id="${id}">Agregar al carrito</button>
-      </div>
-    </div>
-      `;
-      productos.push(productoActual);
-      localStorage.setItem("productos", JSON.stringify(productos));
-    });
-  }catch(error){
-    console.log(error);
-  }
-}
-// aqui termina (es un api para agregar productos)
+
+localStorage.getItem("admin");

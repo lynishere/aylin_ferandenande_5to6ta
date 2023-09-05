@@ -6,6 +6,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   let insertUser = document.getElementById("user-profile"); 
+  function usuario(){
+    if (sessionStorage.getItem("nombreUser") != null) {
+      crearUsuario();
+    } else {
+      fetch("https://randomuser.me/api/")
+        .then((response) => response.json())
+        .then((resultado) => {
+          // manda perfil a sessionStorage
+          let apiNombre = resultado.results[0].name.first;
+          let apiApellido = resultado.results[0].name.last;
+          let apiFoto = resultado.results[0].picture.medium;
+          sessionStorage.setItem("nombreUser", JSON.stringify(apiNombre));
+          sessionStorage.setItem("apellidoUser", JSON.stringify(apiApellido));
+          sessionStorage.setItem("fotoUser", JSON.stringify(apiFoto));
+          // generar html con API
+          insertUser.innerHTML = `
+                  <p id="user-name">Hola, ${apiNombre} ${apiApellido}</p>
+                  <img src="${apiFoto}" id="user-pic">
+                  `;
+        })
+        .catch(
+          (error) => console.log(error),
+          (insertUser.innerHTML = `
+              <p id="user-name">Cargando usuario...</p>
+              <img src="../assets/img/carga_user.png" id="user-pic">
+              `)
+        );
+    }
+  }
+  const crearUsuario = () => {
+  
+    let nombreUser = JSON.parse(sessionStorage.getItem("nombreUser"));
+    let apellidoUser = JSON.parse(sessionStorage.getItem("apellidoUser"));
+    let fotoUser = JSON.parse(sessionStorage.getItem("fotoUser"));
+    insertUser.innerHTML = `
+                <p id="user-name">Hola, ${nombreUser} ${apellidoUser}</p>
+                <img src="${fotoUser}" id="user-pic">
+                `;
+  };
   function perfil() {
     let insertUser = document.getElementById("user-profile");   
     insertUser.innerHTML = `
@@ -15,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
   } 
   if(!localStorage.getItem("admin")){
       insertUser.innerHTML="";
+      usuario();
   } else {
     perfil();
     
@@ -28,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
       carritoContainer.innerHTML =  `
       <h3>El carrito está vacío</h3>
       <br>
-      <a class="login-submit btn primary"  id="boton" href="../index.html">¡Compra algo!</a>
+      <a class="login-submit btn secondary"  id="boton" href="../index.html">¡Compra algo!</a>
       <br>
        `;
 
@@ -39,12 +79,15 @@ document.addEventListener("DOMContentLoaded", function () {
           idProd++;
         }
         carritoContainer.innerHTML += `
+        <br>
+        <button class="btn btn-danger btn-sm elim-prod" data-index="${index}">x</button>
+        <div class="card">      
+        <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
           <div class="cart-item">
-          <button class="btn btn-danger btn-sm elim-prod" data-index="${index}">x</button>
             <h5 class="card-title">${producto.nombre}</h5>
             <p class="card-text">Precio: $${producto.precio.toFixed(2)}</p>
           </div>
-          <br>
+          </div>
         `;
       });
     }
@@ -77,6 +120,12 @@ document.addEventListener("DOMContentLoaded", function () {
           // Vaciar el carrito y actualizar el almacenamiento local
           localStorage.removeItem("carrito");
           carritoContainer.innerHTML = "";
+          carritoContainer.innerHTML =  `
+          <h3>El carrito está vacío</h3>
+          <br>
+          <a class="login-submit btn secondary"  id="boton" href="../index.html">¡Compra algo!</a>
+          <br>
+           `;
           totalElement.textContent = "Total: $0.00";
           
           btnFinalizarCompra.disabled = true;
@@ -93,6 +142,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Vaciar el carrito y actualizar el almacenamiento local
     localStorage.removeItem("carrito");
     carritoContainer.innerHTML = "";
+    carritoContainer.innerHTML =  `
+    <h3>El carrito está vacío</h3>
+    <br>
+    <a class="login-submit btn secondary"  id="boton" href="../index.html">¡Compra algo!</a>
+    <br>
+     `;
     totalElement.textContent = "Total: $0.00";
     btnFinalizarCompra.disabled = true;
     btnVaciarCarrito.disabled = true;
