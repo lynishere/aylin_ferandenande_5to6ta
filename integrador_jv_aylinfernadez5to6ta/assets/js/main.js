@@ -144,7 +144,7 @@ function usuario(){
         (error) => console.log(error),
         (insertUser.innerHTML = `
             <p id="user-name">Cargando usuario...</p>
-            <img src="../assets/img/carga_user.png" id="user-pic">
+            <img src="./assets/img/carga_user.png" id="user-pic">
             `)
       );
   }
