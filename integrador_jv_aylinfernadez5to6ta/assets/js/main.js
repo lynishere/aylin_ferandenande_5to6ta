@@ -179,4 +179,3 @@ if(!localStorage.getItem("admin")){
   
 }
 
-localStorage.getItem("admin");
